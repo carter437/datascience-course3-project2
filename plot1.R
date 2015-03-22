@@ -8,7 +8,7 @@ SCC <- function(){
   readRDS(paste(getwd(),"/datasets/Source_Classification_Code.rds",sep=""))
 }
 
-dataWithEmissionsYear <- rawData %>% select(Emissions,year)
+dataWithEmissionsYear <- NEI() %>% select(Emissions,year)
 summary <- aggregate(Emissions ~ year, dataWithEmissionsYear, FUN=sum)
 barplot(summary$Emissions, summary$year, xlab="Year", ylab="Fine Particulate Matter (PM2.5)", names.arg=summary$year, ylim=range(0,max(summary$Emissions) + 1e+06), 
         main="Total PM2.5 Emissions in the United States")
